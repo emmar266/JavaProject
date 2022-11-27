@@ -16,7 +16,7 @@ public class test {
 
     //this tests the first constructor
     @Test
-    @DisplayName("Test first Construtor")
+    @DisplayName("Test first Constructor")
     void testConstructor(){
         float red = 0.7f;
         float blue = 0.2f;
@@ -26,6 +26,18 @@ public class test {
         assertEquals(colour2.getBlue(),blue,"Blue value should match");
         assertEquals(colour2.getGreen(),green,"Green value should match");
         //assertTrue();
+    }
+    @Test
+    @DisplayName("Test second Constructor")
+    void testOverloadConstructor(){
+        Colour colour3 = new Colour(0.9f);
+        float red =2.14E-43f ;
+        float blue =3.55E-43f ;
+        float green = 2.14E-43f;
+        assertEquals(colour3.getRed(),red,"Red value should match");
+        assertEquals(colour3.getBlue(),blue,"Blue value should match");
+        assertEquals(colour3.getGreen(),green,"Green value should match");
+
     }
 
 
