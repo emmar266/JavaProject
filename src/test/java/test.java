@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 public class test {
     Colour colour;
 
-    @BeforeEach
-    void setUp(){
-        colour = new Colour(0.3f,0.4f,0.9f); //use f at the end to make it a floating point number and not a double(default)
-    }
 
     //this tests the first constructor
     @Test
@@ -37,6 +33,35 @@ public class test {
         assertEquals(colour3.getRed(),red,"Red value should match");
         assertEquals(colour3.getBlue(),blue,"Blue value should match");
         assertEquals(colour3.getGreen(),green,"Green value should match");
+
+    }
+    @Test
+    @DisplayName("Test red getter")
+    void testRedGetter(){
+        float red = 0.7f;
+        float blue = 0.2f;
+        float green = 0.3f;
+        Colour colour4 = new Colour(red,green,blue);
+        assertTrue(colour4.getRed() == red);
+    }
+    @Test
+    @DisplayName("Test Green getter")
+    void testGreenGetter(){
+        float red = 0.7f;
+        float blue = 0.2f;
+        float green = 0.3f;
+        Colour c1 = new Colour(red,green,blue);
+        assertTrue(c1.getGreen() == green);
+
+    }
+    @Test
+    @DisplayName("Test Blue getter")
+    void testBlueGetter(){
+        float red = 0.7f;
+        float blue = 0.2f;
+        float green = 0.3f;
+        Colour c1 = new Colour(red,green,blue);
+        assertTrue(c1.getBlue() == blue);
 
     }
 
