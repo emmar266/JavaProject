@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import colour.Colour;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 public class test {
@@ -69,9 +68,6 @@ public class test {
     void testEqual(){
         Colour colour1 = new Colour(0f,0f,0f);
         Colour colour2 = new Colour(0f);
-        System.out.println((colour2.getRed()));
-        System.out.println((colour2.getGreen()));
-        System.out.println((colour2.getBlue()));
         assertTrue(colour1.equals(colour2) == true);
 
     }
