@@ -17,22 +17,22 @@ public class test {
         float red = 0.7f;
         float blue = 0.2f;
         float green = 0.3f;
-        Colour colour2 = new Colour(red,green,blue);
-        assertEquals(colour2.getRed(),red,"Red value should match");
-        assertEquals(colour2.getBlue(),blue,"Blue value should match");
-        assertEquals(colour2.getGreen(),green,"Green value should match");
+        Colour colour = new Colour(red,green,blue);
+        assertEquals(colour.getRed(),red,"Red value should match");
+        assertEquals(colour.getBlue(),blue,"Blue value should match");
+        assertEquals(colour.getGreen(),green,"Green value should match");
         //assertTrue();
     }
     @Test
     @DisplayName("Test second Constructor")
     void testOverloadConstructor(){
-        Colour colour3 = new Colour(0.9f);
+        Colour colour = new Colour(0.9f);
         float red =2.14E-43f ;
         float blue =3.55E-43f ;
         float green = 2.14E-43f;
-        assertEquals(colour3.getRed(),red,"Red value should match");
-        assertEquals(colour3.getBlue(),blue,"Blue value should match");
-        assertEquals(colour3.getGreen(),green,"Green value should match");
+        assertEquals(colour.getRed(),red,"Red value should match");
+        assertEquals(colour.getBlue(),blue,"Blue value should match");
+        assertEquals(colour.getGreen(),green,"Green value should match");
 
     }
     @Test
@@ -41,8 +41,8 @@ public class test {
         float red = 0.7f;
         float blue = 0.2f;
         float green = 0.3f;
-        Colour colour4 = new Colour(red,green,blue);
-        assertTrue(colour4.getRed() == red);
+        Colour colour = new Colour(red,green,blue);
+        assertTrue(colour.getRed() == red);
     }
     @Test
     @DisplayName("Test Green getter")
@@ -50,8 +50,8 @@ public class test {
         float red = 0.7f;
         float blue = 0.2f;
         float green = 0.3f;
-        Colour c1 = new Colour(red,green,blue);
-        assertTrue(c1.getGreen() == green);
+        Colour colour = new Colour(red,green,blue);
+        assertTrue(colour.getGreen() == green);
 
     }
     @Test
@@ -60,10 +60,22 @@ public class test {
         float red = 0.7f;
         float blue = 0.2f;
         float green = 0.3f;
-        Colour c1 = new Colour(red,green,blue);
-        assertTrue(c1.getBlue() == blue);
+        Colour colour = new Colour(red,green,blue);
+        assertTrue(colour.getBlue() == blue);
 
     }
+    @Test
+    @DisplayName("Test equals")
+    void testEqual(){
+        Colour colour1 = new Colour(0f,0f,0f);
+        Colour colour2 = new Colour(0f);
+        System.out.println((colour2.getRed()));
+        System.out.println((colour2.getGreen()));
+        System.out.println((colour2.getBlue()));
+        assertTrue(colour1.equals(colour2) == true);
+
+    }
+
 
 
 
