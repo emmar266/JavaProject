@@ -34,8 +34,7 @@ public class Colour {
      * */
     public Colour(float combinedRGB){
         //I'm not sure what's supposed to happen here but sure look
-        String binaryRep = floatToBinarayString()String(combinedRGB);
-        System.out.println(binaryRep);
+        String binaryRep = floatToBinarayString(combinedRGB);
         if (binaryRep.length() <= 25){
             while (binaryRep.length() <= 25){
                 binaryRep ='0' + binaryRep;
@@ -44,9 +43,9 @@ public class Colour {
         String red = binaryRep.substring(16,24);
         String blue = binaryRep.substring(0,8);
         String green = binaryRep.substring(8,16);
-        this.red = stringToFloat(red);
-        this.green = stringToFloat(green);
-        this.blue = stringToFloat(blue);
+        this.red = binaryStringToFloat(red);
+        this.green = binaryStringToFloat(green);
+        this.blue = binaryStringToFloat(blue);
 
     }
     /**
@@ -76,11 +75,21 @@ public class Colour {
         String binary = Integer.toBinaryString(intBits);
         return binary;
     }
-    private float stringToFloat(String stringToConvert){
+    /**
+     * Will convert a binary String to a floating number
+     * @param stringToConvert - the string that contains binary to convert to a floating point
+     * */
+    private float binaryStringToFloat(String stringToConvert){
         int intVal = Integer.parseInt(stringToConvert,2);
         float floatVal = Float.intBitsToFloat(intVal);
         return floatVal;
     }
+    /**
+     * Will override the default equals and ensure equals means that the red, green and blue value are all
+     * equal between the two objects
+     * @param c2 - represents another colour object which we are testing against the current one
+     *
+     * */
     public boolean equals(Colour c2){
         if (this.getRed() == c2.getRed()){
             if (this.getBlue() == c2.getBlue()){
