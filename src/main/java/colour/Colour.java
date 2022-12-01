@@ -6,38 +6,72 @@ public class Colour {
     private float blue;
     private float combinedRGB;
 
-    public Colour(float r, float g, float b){
-        this.red = r;
-        this.green = g;
-        this.blue = b;
+    /**
+     * Creates a colour from the following components
+     * @param red - represents the amount of red in the colour
+     * @param blue - represents the amount of blue in the colour
+     * @param green - represents the amount of green in the colour
+     * **/
+    public Colour(float red, float green, float blue){
+        if (red>1 |red <0){
+            throw new IllegalArgumentException("Red value should be between 0 and 1");
+        }
+        this.red = red;
+        if (blue>1 | blue <0){
+            throw new IllegalArgumentException("Blue value should be between 0 and 1");
+        }
+        this.green = green;
+        if (green>1 | green <0){
+            throw new IllegalArgumentException("Green value should be between 0 and 1");
+        }
+        this.blue = blue;
     }
-    //i really hate that we're overloading the constructor - it feels wrong
+    /**
+     * Alternative Constructor for Colour which takes 1 input as apposed to 3
+     * @param combinedRGB - Value of the entire Colour where the first 8 bits represent
+     *                    the blue componenet of the colour, next 8 bits represent green and the
+     *                   last 8 bits represent the red component
+     * */
     public Colour(float combinedRGB){
         //I'm not sure what's supposed to happen here but sure look
-        String binaryRep = floatToString(combinedRGB);
+        String binaryRep = floatToBinarayString()String(combinedRGB);
         System.out.println(binaryRep);
+        if (binaryRep.length() <= 25){
+            while (binaryRep.length() <= 25){
+                binaryRep ='0' + binaryRep;
+            }
+        }
         String red = binaryRep.substring(16,24);
         String blue = binaryRep.substring(0,8);
         String green = binaryRep.substring(8,16);
         this.red = stringToFloat(red);
         this.green = stringToFloat(green);
         this.blue = stringToFloat(blue);
-        System.out.println(this.red);
-        System.out.println(this.blue);
-        System.out.println(this.green);
 
     }
+    /**
+     * Returns the value associated with red
+     * */
     public float getRed(){
         return this.red;
     }
+    /**
+     * Returns the value associated with blue
+     * */
     public float getBlue(){
         return this.blue;
     }
+    /**
+     * Returns the value associated with red
+     * */
     public float getGreen(){
         return this.green;
     }
-
-    private String floatToString(float FloatToConvert){
+    /**
+     * Will convert a floating point number into a string containing the binary value of that floating number
+     * @param  FloatToConvert - Floating value to convert to binary
+     * */
+    private String floatToBinarayString(float FloatToConvert){
         int intBits = Float.floatToIntBits(FloatToConvert);
         String binary = Integer.toBinaryString(intBits);
         return binary;
@@ -46,6 +80,16 @@ public class Colour {
         int intVal = Integer.parseInt(stringToConvert,2);
         float floatVal = Float.intBitsToFloat(intVal);
         return floatVal;
+    }
+    public boolean equals(Colour c2){
+        if (this.getRed() == c2.getRed()){
+            if (this.getBlue() == c2.getBlue()){
+                if (this.getGreen() == c2.getGreen()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
